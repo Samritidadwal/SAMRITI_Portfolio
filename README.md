@@ -1,4 +1,4 @@
-# Samriti_Portfolio
+ 
 # Samriti's Portfolio
 
 Welcome to my portfolio! This repository showcases my skills, projects, and experiences in various fields such as cloud computing, machine learning, software development, and more.
