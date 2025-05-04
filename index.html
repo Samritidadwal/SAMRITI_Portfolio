@@ -1,0 +1,724 @@
+<html class="scroll-smooth" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Portfolio - Samriti Dadwal
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <script>
+   // Enable dark mode class strategy and custom theme colors
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primaryLight: '#8b5cf6',  // violet-500
+            primaryDark: '#6d28d9',   // violet-700
+            secondaryLight: '#3b82f6', // blue-500
+            secondaryDark: '#1e40af',  // blue-900
+            bgLight: '#ede9fe',       // violet-100
+            bgDark: '#1e293b',        // slate-800
+            cardLight: '#ddd6fe',     // violet-200
+            cardDark: '#312e81',      // violet-900
+            textLight: '#312e81',
+            textDark: '#ede9fe',
+          },
+          boxShadow: {
+            'primary-glow': '0 0 15px 3px rgba(139, 92, 246, 0.7)',
+            'primary-glow-md': '0 0 20px 5px rgba(139, 92, 246, 0.8)',
+            'section-glow': '0 8px 24px rgba(139, 92, 246, 0.3)',
+          },
+          keyframes: {
+            typing: {
+              '0%': { width: '0' },
+              '100%': { width: '31ch' },
+            },
+            blinkCaret: {
+              '50%': { borderColor: 'transparent' },
+            },
+            fadeInUp: {
+              '0%': { opacity: 0, transform: 'translateY(10px)' },
+              '100%': { opacity: 1, transform: 'translateY(0)' },
+            },
+            pulseGlow: {
+              '0%, 100%': { boxShadow: '0 0 15px 3px rgba(139, 92, 246, 0.7)' },
+              '50%': { boxShadow: '0 0 25px 6px rgba(139, 92, 246, 1)' },
+            },
+          },
+          animation: {
+            typing: 'typing 3.5s steps(31, end) forwards',
+            blinkCaret: 'blinkCaret 0.75s step-end infinite',
+            fadeInUp: 'fadeInUp 0.6s ease forwards',
+            pulseGlow: 'pulseGlow 3s ease-in-out infinite',
+          },
+          borderRadius: {
+            'xl': '1rem',
+          }
+        },
+      },
+    }
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Inter', sans-serif;
+      transition: background-color 0.5s ease, color 0.5s ease;
+      background-color: var(--bg);
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
+    .typing {
+      border-right: 2px solid var(--primary) !important;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 3.5s steps(31, end) forwards, blinkCaret 0.75s step-end infinite;
+      max-width: 100%;
+      display: inline-block;
+      border-color: var(--primary);
+    }
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--primary);
+      border-radius: 10px;
+      border: 2px solid transparent;
+      background-clip: content-box;
+    }
+    /* Card style */
+    .card {
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      will-change: transform, box-shadow;
+      border-radius: 1rem;
+      background-color: var(--card-bg);
+      box-shadow: var(--card-shadow);
+      padding: 1.5rem;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: saturate(180%) blur(10px);
+      border: 1px solid rgba(255 255 255 / 0.1);
+      position: relative;
+    }
+    .card:hover {
+      box-shadow: 0 0 30px 8px rgba(139, 92, 246, 0.9);
+      transform: translateY(-8px);
+    }
+    /* Button style */
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--bg);
+      font-weight: 700;
+      padding: 0.75rem 1.75rem;
+      border-radius: 9999px;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.6);
+      user-select: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      box-shadow: 0 0 15px 3px rgba(139, 92, 246, 0.7);
+      animation: pulseGlow 3s ease-in-out infinite;
+      align-self: flex-start;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      box-shadow: 0 0 25px 6px var(--primary-dark);
+    }
+    /* Dark mode variables */
+    :root {
+      --primary: #8b5cf6;
+      --primary-dark: #6d28d9;
+      --secondary: #3b82f6;
+      --secondary-dark: #1e40af;
+      --bg: #ede9fe;
+      --card-bg: #ddd6fe;
+      --card-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      --text: #312e81;
+    }
+    .dark {
+      --primary: #8b5cf6;
+      --primary-dark: #6d28d9;
+      --secondary: #3b82f6;
+      --secondary-dark: #1e40af;
+      --bg: #1e293b;
+      --card-bg: rgba(49, 46, 129, 0.7);
+      --card-shadow: 0 8px 24px rgba(139, 92, 246, 0.5);
+      --text: #ede9fe;
+    }
+    /* Link style */
+    a.link {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.3s ease;
+      letter-spacing: 0.05em;
+    }
+    a.link:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+    /* Header fade in */
+    header > * {
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    header > *:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+    header > *:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+    header > *:nth-child(3) {
+      animation-delay: 0.5s;
+    }
+    /* Skills cards */
+    .skills-card {
+      background-color: var(--card-bg);
+      color: var(--text);
+      border-radius: 1rem;
+      padding: 1.5rem 2rem;
+      box-shadow: var(--card-shadow);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      cursor: default;
+      backdrop-filter: saturate(180%) blur(10px);
+      border: 1px solid rgba(255 255 255 / 0.1);
+    }
+    .skills-card:hover {
+      box-shadow: 0 0 30px 8px rgba(139, 92, 246, 0.9);
+      transform: translateY(-8px);
+    }
+    .skills-card h3 {
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    /* Circular photo container */
+    .photo-container {
+      width: 96px;
+      height: 96px;
+      border-radius: 9999px;
+      overflow: hidden;
+      margin: 0 auto 1.5rem auto;
+      box-shadow: 0 0 25px 6px rgba(139, 92, 246, 0.7);
+      transition: box-shadow 0.3s ease;
+    }
+    .photo-container:hover {
+      box-shadow: 0 0 35px 10px rgba(139, 92, 246, 1);
+    }
+    .photo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* Section container with subtle glow and rounded corners */
+    section {
+      background-color: var(--card-bg);
+      border-radius: 1rem;
+      padding: 2rem 2.5rem;
+      margin-bottom: 3rem;
+      box-shadow: var(--card-shadow);
+      backdrop-filter: saturate(180%) blur(10px);
+      border: 1px solid rgba(255 255 255 / 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+    section:hover {
+      box-shadow: 0 0 30px 8px rgba(139, 92, 246, 0.9);
+      transform: translateY(-6px);
+    }
+    section h2 {
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--primary);
+      text-align: center;
+      font-size: 1.5rem;
+      text-shadow: 0 0 8px rgba(139, 92, 246, 0.7);
+    }
+    section p, section ul {
+      color: var(--text);
+      font-size: 1rem;
+      line-height: 1.6;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    section ul {
+      list-style-type: disc;
+      padding-left: 1.25rem;
+    }
+    section ul li {
+      margin-bottom: 0.5rem;
+    }
+    /* Project details toggle */
+    .details {
+      margin-top: 1rem;
+      background: rgba(30, 35, 57, 0.8);
+      padding: 1rem 1.25rem;
+      border-radius: 0.75rem;
+      font-size: 0.9rem;
+      color: #d1d5db;
+      display: none;
+      line-height: 1.5;
+      user-select: text;
+      box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+    }
+    .details-button {
+      background-color: var(--primary);
+      border: none;
+      color: var(--bg);
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      margin-top: 1rem;
+      align-self: flex-start;
+    }
+    .details-button:hover {
+      background-color: var(--primary-dark);
+      box-shadow: 0 0 20px 6px var(--primary-dark);
+    }
+    /* Responsive improvements */
+    @media (min-width: 640px) {
+      .typing {
+        font-size: 1.25rem;
+      }
+      .photo-container {
+        width: 128px;
+        height: 128px;
+        margin-bottom: 2rem;
+      }
+      section {
+        padding: 3rem 4rem;
+      }
+      section h2 {
+        font-size: 2rem;
+      }
+      section p, section ul {
+        font-size: 1.125rem;
+      }
+    }
+  </style>
+ </head>
+ <body class="transition-colors duration-500">
+  <div class="max-w-5xl mx-auto px-4 py-8 sm:py-12" style="">
+   <!-- Dark/Light mode toggle -->
+   <div class="flex justify-end mb-6">
+    <button aria-label="Toggle Dark/Light Mode" class="btn-primary flex items-center gap-2 shadow-primary-glow hover:shadow-primary-glow-md focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark" id="modeToggle">
+     <i class="fas fa-moon" id="modeIcon">
+     </i>
+     <span class="text-sm" id="modeText">
+      Dark Mode
+     </span>
+    </button>
+   </div>
+   <!-- Header Banner -->
+   <div class="rounded-lg p-8 shadow-primary-glow mb-10 select-none" style="background-color: var(--bg); color: var(--text);">
+
+  <div class="photo-container">
+  <img 
+  src="Samriti.jpg" 
+    alt="Samriti Dadwal smiling" 
+    height="128" 
+    width="128"
+    style="border-radius: 50%; object-fit: cover;"
+  />
+</div>
+
+
+    <h1 class="font-bold text-3xl sm:text-4xl md:text-5xl tracking-wide mb-2 text-center">
+     Samriti Dadwal
+    </h1>
+
+    <p class="text-base sm:text-lg md:text-xl font-medium mb-4 text-center">
+     AWS | DevOps | Cloud Solution Architect
+    </p>
+
+    <div class="flex flex-wrap justify-center items-center gap-6 text-sm sm:text-base font-normal" style="color: var(--text);">
+     <div class="flex items-center gap-2">
+      <i class="fas fa-phone-alt text-base sm:text-lg" style="color: var(--primary);">
+      </i>
+      <span>
+       +91 9816238595
+      </span>
+     </div>
+
+     <div class="flex items-center gap-2">
+      <i class="fas fa-envelope text-base sm:text-lg" style="color: var(--primary);">
+      </i>
+
+      <span>
+      <a href="mailto:dadwalsamritithc@gmail.com" style="color: var(--primary);">
+                dadwalsamritithc@gmail.com
+            </a>
+      </span>
+
+     </div>
+
+     <div class="flex items-center gap-2">
+      <i class="fab fa-linkedin-in text-base sm:text-lg" style="color: var(--primary);">
+      </i>
+
+      <a class="link text-lg sm:text-xl" 
+   href="https://www.linkedin.com/in/samriti-dadwal-78354026a" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   tabindex="0">
+  LinkedIn
+</a>
+
+     </div>
+    </div>
+   <a href="_Samriti_Resume.pdf" download>
+  <button class="btn-primary mt-6 text-sm sm:text-base font-semibold px-6 py-3 shadow-primary-glow hover:bg-primary-dark mx-auto block">
+    Download Resume
+  </button>
+</a>
+
+   </div>
+   <!-- Summary -->
+   <section>
+    <h2>
+     Summary
+    </h2>
+    <p>
+     AWS-certified Cloud Enthusiast with hands-on experience in deploying and managing cloud solutions using EC2, Lambda, S3, and other AWS services. Skilled in Python programming and familiar with Machine Learning (ML) and Artificial Intelligence (AI). Proficient in Linux, Git, and Docker. Passionate about building scalable DevOps workflows and automating processes for increased efficiency.
+    </p>
+   </section>
+
+
+   <!-- Skills with cards -->
+   <section>
+    <h2>
+     Skills
+    </h2>
+
+   <section class="text-primaryDark dark:text-primaryLight p-6">
+  <h2 class="text-2xl font-bold mb-6">Skills</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    
+    <!-- Cloud Card -->
+    <div class="skills-card bg-white dark:bg-gray-800 p-4 rounded-2xl shadow cursor-pointer" onclick="toggleSkills('cloud-skills')">
+      <h3 class="text-lg font-semibold">☁️ Cloud</h3>
+      <ul id="cloud-skills" class="mt-3 list-disc list-inside hidden text-sm">
+        <li>EC2</li>
+        <li>S3</li>
+        <li>IAM</li>
+        <li>Lambda</li>
+        <li>VPC</li>
+        <li>RDS</li>
+        <li>DynamoDB</li>
+        <li>Route 53</li>
+        <li>CloudFront</li>
+        <li>API Gateway</li>
+        <li>CloudWatch</li>
+        <li>Elastic Beanstalk</li>
+        <li>CloudFormation</li>
+        <li>ELB</li>
+        <li>Step Functions</li>
+        <li>AWS Fargate</li>
+        <li>Secrets Manager</li>
+        <li>AWS Amplify</li>
+      </ul>
+    </div>
+
+    <!-- IaC Card -->
+    <div class="skills-card bg-white dark:bg-gray-800 p-4 rounded-2xl shadow cursor-pointer" onclick="toggleSkills('iac-skills')">
+      <h3 class="text-lg font-semibold">⚙️ IaC</h3>
+      <ul id="iac-skills" class="mt-3 list-disc list-inside hidden text-sm">
+        <li>Terraform</li>
+        <li>AWS CloudFormation</li>
+        <li>Ansible</li>
+      </ul>
+    </div>
+
+    <!-- Tools Card -->
+    <div class="skills-card bg-white dark:bg-gray-800 p-4 rounded-2xl shadow cursor-pointer" onclick="toggleSkills('tools-skills')">
+      <h3 class="text-lg font-semibold">🛠️ Tools</h3>
+      <ul id="tools-skills" class="mt-3 list-disc list-inside hidden text-sm">
+        <li>Git</li>
+        <li>Docker</li>
+        <li>VS Code</li>
+        <li>Linux CLI</li>
+        <li>Shell Scripting</li>
+      </ul>
+    </div>
+
+    <!-- Languages Card -->
+    <div class="skills-card bg-white dark:bg-gray-800 p-4 rounded-2xl shadow cursor-pointer" onclick="toggleSkills('languages-skills')">
+      <h3 class="text-lg font-semibold">💻 Languages</h3>
+      <ul id="languages-skills" class="mt-3 list-disc list-inside hidden text-sm">
+        <li>Python</li>
+        <li>HTML</li>
+        <li>Bash</li>
+        <li>SQL</li>
+        <li>JSON</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggleSkills(id) {
+    const el = document.getElementById(id);
+    el.classList.toggle('hidden');
+  }
+</script>
+
+
+
+
+
+
+   <!-- Projects -->
+   <section>
+    <h2>
+     Projects
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 text-primaryDark dark:text-primaryLight">
+     <div class="card" data-project="project1">
+      <h4>
+       3-Tier Web Application
+      </h4>
+      <p class="font-semibold text-secondaryLight dark:text-secondary">
+       EC2 + RDS + S3 with Route53 and monitoring
+      </p>
+      <button class="details-button" onclick="toggleDetails(this)">
+       DETAILS
+      </button>
+      <div class="details">
+       Designed a secure and scalable 3-tier architecture using EC2 for compute, RDS for database management, and S3 for static content. Route53 handled DNS routing and traffic management. CloudWatch was used for monitoring and alerting.
+      </div>
+     </div>
+     <div class="card" data-project="project2">
+      <h4>
+       Serverless Receipt Tool
+      </h4>
+      <p class="font-semibold text-secondaryLight dark:text-secondary">
+       AWS Textract + S3 + Lambda + SES
+      </p>
+      <button class="details-button" onclick="toggleDetails(this)">
+       DETAILS
+      </button>
+      <div class="details">
+       Developed a serverless tool to extract data from uploaded receipts using AWS Textract, store them in S3, trigger Lambda to process the text, and send a summary via SES to users.
+      </div>
+     </div>
+     <div class="card" data-project="project3">
+      <h4>
+       PowerCloud EC2 Automation
+      </h4>
+      <p class="font-semibold text-secondaryLight dark:text-secondary">
+       Lambda + CloudWatch triggers
+      </p>
+      <button class="details-button" onclick="toggleDetails(this)">
+       DETAILS
+      </button>
+      <div class="details">
+       Automated EC2 instance lifecycle using Lambda and scheduled triggers from CloudWatch. Enhanced cost efficiency by auto-starting/stopping instances based on defined policies.
+      </div>
+     </div>
+     <div class="card" data-project="project4">
+      <h4>
+       Smart Cloud Dictionary App
+      </h4>
+      <p class="font-semibold text-secondaryLight dark:text-secondary">
+       Amplify + API Gateway + Lambda + DynamoDB
+      </p>
+      <button class="details-button" onclick="toggleDetails(this)">
+       DETAILS
+      </button>
+      <div class="details">
+       Built a serverless dictionary with a React frontend on AWS Amplify, using API Gateway and Lambda to fetch word definitions stored in DynamoDB. Designed to be fast, scalable, and cost-effective.
+      </div>
+     </div>
+    </div>
+   </section>
+
+
+   <!-- Experience & Internships -->
+   <!-- Experience & Internships -->
+<section class="p-6 text-primaryDark dark:text-primaryLight">
+  <h2 class="text-2xl font-bold mb-6">Experience & Internships</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <!-- AWS Cloud Intern -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border-l-4 border-yellow-400">
+      <h3 class="text-xl font-semibold text-yellow-600 mb-2">☁️ AWS Cloud Intern (Ongoing)</h3>
+      <p class="text-sm leading-relaxed">
+        Currently working as an <strong>AWS Cloud Intern</strong> focusing on:
+      </p>
+      <ul class="list-disc list-inside text-sm mt-2 space-y-1">
+        <li>Automating infrastructure using <strong>Terraform</strong> and <strong>CloudFormation</strong>.</li>
+        <li>Deploying and managing services like <strong>EC2, S3, IAM, Lambda, VPC, RDS, and CloudWatch</strong>.</li>
+        <li>Implementing secure, scalable, and cost-efficient cloud architectures.</li>
+        <li>Hands-on with <strong>serverless applications</strong>, <strong>API Gateway</strong>, and <strong>monitoring/logging pipelines</strong>.</li>
+        <li>Learning and applying <strong>DevOps practices</strong> using AWS-native tools.</li>
+        <li>Collaborating in a real-world project environment to deliver cloud-first solutions.</li>
+      </ul>
+      <p class="text-sm mt-2">
+        This role has shaped my deep understanding of cloud fundamentals, security, automation, and hands-on deployment in AWS.
+      </p>
+    </div>
+
+    <!-- Python Developer Intern -->
+    <div class="bg-white dark:bg-gray-800 p-5 rounded-2xl shadow hover:shadow-md transition border-l-4 border-pink-400">
+      <h3 class="text-lg font-semibold text-pink-600 mb-2">🐍 Python Developer Intern</h3>
+      <p class="text-sm">
+        Built a complete <strong>Hotel Billing System</strong> using Python and Tkinter, featuring real-time UI, customer billing, and database integration. Enhanced my understanding of GUI development and backend logic structuring.
+      </p>
+    </div>
+
+     <!-- ML/DL Intern -->
+    <div class="bg-white dark:bg-gray-800 p-5 rounded-2xl shadow hover:shadow-md transition border-l-4 border-green-400">
+      <h3 class="text-lg font-semibold text-green-600 mb-2">🤖 ML/DL Intern</h3>
+      <p class="text-sm">
+        Worked on multiple AI projects including:
+        <ul class="list-disc list-inside mt-2 text-sm">
+          <li><strong>Heart Disease Predictor</strong> using supervised ML.</li>
+          <li><strong>Yoga Recommender</strong> powered by pose estimation.</li>
+          <li><strong>Face Recognition System</strong> with OpenCV & deep learning.</li>
+        </ul>
+        <p class="text-white mt-2">
+          Developed data pipelines, trained models, and integrated real-time predictions.
+        </p>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+   <!-- Education -->
+   <section class="p-6 text-primaryDark dark:text-primaryLight">
+    <h2 class="text-2xl font-bold mb-6 text-center">Education</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border-l-4 border-indigo-500">
+        <h3 class="text-xl font-semibold text-indigo-600 mb-2">🎓 B.Tech in Computer Science & Engineering</h3>
+        <p class="text-sm font-medium mb-1">Sandar Beant Singh State University</p>
+        <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">2021 – 2025</p>
+        <p class="text-sm leading-relaxed">
+          Pursuing Bachelor of Technology with focus on computer science fundamentals, programming, and cloud computing.
+        </p>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border-l-4 border-purple-500">
+        <h3 class="text-xl font-semibold text-purple-600 mb-2">🏫 Senior Secondary (Class 12)</h3>
+        <p class="text-sm font-medium mb-1">GOV. Sr. Sec. School</p>
+        <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">2019 – 2021</p>
+        <p class="text-sm leading-relaxed">
+          Completed senior secondary education with focus on science and mathematics.
+        </p>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border-l-4 border-pink-500 md:col-span-2">
+        <h3 class="text-xl font-semibold text-pink-600 mb-2">🏫 Secondary (Class 10)</h3>
+        <p class="text-sm font-medium mb-1">Greatway Public Sr. Sec. School</p>
+        <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">2007 – 2019</p>
+        <p class="text-sm leading-relaxed">
+          Completed secondary education with strong academic performance and extracurricular involvement.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+   <!-- Certifications -->
+  <section class="p-6 text-primaryDark dark:text-primaryLight">
+  <h2 class="text-2xl font-bold mb-4">🎓 Certifications</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+
+    <!-- AWS Cloud Architect -->
+    <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-md border-l-4 border-yellow-500">
+      <h3 class="font-semibold text-yellow-600">AWS Cloud Architect <span class="text-xs text-gray-500">(In Progress)</span></h3>
+      <p class="text-xs text-gray-600 dark:text-gray-300">Learning AWS services, cloud infrastructure design, and DevOps practices.</p>
+    </div>
+
+<!-- AWS Diploma (Alison) -->
+    <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-md border-l-4 border-teal-500">
+      <h3 class="font-semibold text-teal-600">AWS Cloud Diploma – Alison</h3>
+      <p class="text-xs text-gray-600 dark:text-gray-300">Completed a comprehensive course on AWS fundamentals, cloud infrastructure, and deployment strategies.</p>
+    </div>
+
+
+    <!-- Cloud Computing -->
+    <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-md border-l-4 border-blue-500">
+      <h3 class="font-semibold text-blue-600">Cloud Computing – Internshala</h3>
+      <p class="text-xs text-gray-600 dark:text-gray-300">Covered cloud fundamentals, service models (IaaS, PaaS, SaaS), and deployment strategies.</p>
+    </div>
+
+    <!-- Python Programming -->
+    <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-md border-l-4 border-green-500">
+      <h3 class="font-semibold text-green-600">Python Programming – Solitaire Infosys</h3>
+      <p class="text-xs text-gray-600 dark:text-gray-300">Hands-on training in Python basics, data structures, OOP, and mini project development.</p>
+    </div>
+
+     
+
+  </div>
+</section>
+
+
+  </div>
+  <script>
+   const modeToggle = document.getElementById('modeToggle');
+    const modeText = document.getElementById('modeText');
+    const modeIcon = document.getElementById('modeIcon');
+    const htmlEl = document.documentElement;
+
+    // Load saved mode from localStorage or default to light
+    const savedMode = localStorage.getItem('mode') || 'light';
+    if (savedMode === 'dark') {
+      htmlEl.classList.add('dark');
+      modeText.textContent = 'Light Mode';
+      modeIcon.classList.replace('fa-moon', 'fa-sun');
+    }
+
+    modeToggle.addEventListener('click', () => {
+      htmlEl.classList.toggle('dark');
+      if (htmlEl.classList.contains('dark')) {
+        modeText.textContent = 'Light Mode';
+        modeIcon.classList.replace('fa-moon', 'fa-sun');
+        localStorage.setItem('mode', 'dark');
+      } else {
+        modeText.textContent = 'Dark Mode';
+        modeIcon.classList.replace('fa-sun', 'fa-moon');
+        localStorage.setItem('mode', 'light');
+      }
+    });
+
+    function toggleDetails(button) {
+      const detailsDiv = button.nextElementSibling;
+      if (detailsDiv.style.display === 'block') {
+        detailsDiv.style.display = 'none';
+        button.textContent = 'DETAILS';
+      } else {
+        detailsDiv.style.display = 'block';
+        button.textContent = 'HIDE';
+      }
+    }
+  </script>
+ </body>
+</html>
